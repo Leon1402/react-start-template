@@ -17,7 +17,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <Logo />
-      <AddToCartButton counter={1} />
+      <AddToCartButton counter={0} />
     </StyledHeader>
   );
 };
