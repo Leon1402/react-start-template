@@ -1,7 +1,12 @@
 {
 	"presets": [
 		["@babel/preset-env", { "useBuiltIns": "entry", "corejs": "3.22" }],
-		"@babel/preset-react",
+    [
+      "@babel/preset-react",
+      {
+        "runtime": "automatic" // defaults to classic
+      }
+    ],
 		"@babel/preset-typescript"
 	]
 }

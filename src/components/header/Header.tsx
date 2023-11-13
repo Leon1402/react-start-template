@@ -11,13 +11,14 @@ const StyledHeader = styled.header`
   align-items: center;
   padding: 10px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  background-color: white;
 `;
 
 export const Header = () => {
   return (
     <StyledHeader>
       <Logo />
-      <AddToCartButton counter={0} />
+      <AddToCartButton counter={1} />
     </StyledHeader>
   );
 };

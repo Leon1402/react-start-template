@@ -49,7 +49,7 @@ const getDataAmount = (data: Data): number => {
 
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const unhandled: never = data; // здесь, возможно, нужно использовать нечто другое. :never должен остаться
+      const unhandled: never = data as never; // здесь, возможно, нужно использовать нечто другое. :never должен остаться
       throw new Error(`unknown type: ${data.type}`);
     }
   }

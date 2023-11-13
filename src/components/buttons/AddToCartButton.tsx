@@ -2,48 +2,59 @@ import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 
 const buttonStyle = css`
-  background-color: #4f4fdd;
-  color: white;
   transition: all 0.3s ease-out;
-  border: 1px solid #4f4fdd;
-  &:hover {
-    background-color: white;
-    color: #4f4fdd;
-  }
+  padding: 10px;
+  border-radius: 5px;
 `;
 
 const StyledButton = styled.button`
-  padding: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
   ${buttonStyle}
+  background: #005bff;
+  color: white;
+  &:hover {
+    background: #005bdd;
+  }
 `;
 
 const Container = styled.div`
   display: flex;
 `;
 
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 const CounterInput = styled.input`
-  width: 50px;
+  width: 30px;
+  text-align: center;
+  border: none;
+  border: 1px solid rgba(0, 150, 255, 0.08);
+  border-left: none;
+  border-right: none;
 `;
-const CounterButton = styled.button`
+const CounterButton = styled.button<{ $left?: boolean }>`
   ${buttonStyle}
-  padding: 3px;
-  line-height: 0.7;
+  color: #005bff;
+  background: rgba(0, 150, 255, 0.08);
+  &:hover {
+    background: rgba(0, 150, 255, 0.2);
+  }
+  padding: 10px;
+  ${({ $left }) =>
+    $left
+      ? {
+          borderTopRightRadius: 0,
+          borderBottomRightRadius: 0,
+        }
+      : {
+          borderTopLeftRadius: 0,
+          borderBottomLeftRadius: 0,
+        }}
 `;
 
 const Button = () => <StyledButton>add to cart</StyledButton>;
 const InputWithCounter = () => (
   <Container>
-    <CounterInput value={10} />
-    <ButtonsContainer>
-      <CounterButton>+</CounterButton>
-      <CounterButton>-</CounterButton>
-    </ButtonsContainer>
+    <CounterButton $left>-</CounterButton>
+    <CounterInput defaultValue={10} />
+    <CounterButton>+</CounterButton>
   </Container>
 );
 

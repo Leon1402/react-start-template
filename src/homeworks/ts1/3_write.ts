@@ -129,7 +129,7 @@ export const createRandomProduct = (createdAt: string): TProduct => {
     name: productName,
     price: productPrice,
     photo: productName + '.jpg',
-    desc: 'description to' + productName,
+    desc: 'This is a description to ' + productName + ' More text. More text.',
     oldPrice: productPrice - 200,
     category: {
       id: makeRandomString(5),
