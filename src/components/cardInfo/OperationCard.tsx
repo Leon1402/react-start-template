@@ -75,7 +75,7 @@ export const OperationCard: FC<IProps> = ({ price, name, descr, category, images
         <MainImage src={mainImage} alt={mainImage} />
         <OtherImagesContainer>
           {otherImages.map((image, index) => (
-            <Image ksy={index} src={image} alt={image} />
+            <Image key={index} src={image} alt={image} />
           ))}
         </OtherImagesContainer>
       </ImagesConatainer>
