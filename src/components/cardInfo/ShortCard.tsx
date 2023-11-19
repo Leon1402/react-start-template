@@ -44,8 +44,8 @@ export const ShortCard: FC<IProps> = ({ price, name, descr, image }) => {
   return (
     <Container>
       <Image src={image} alt="card image" />
-      <Price>{price}</Price>
-      <Name>{name}</Name>
+      <Price>Цена: {price}</Price>
+      <Name>Название: {name}</Name>
       <Description>{descr}</Description>
       <AddToCartButton counter={0} />
     </Container>

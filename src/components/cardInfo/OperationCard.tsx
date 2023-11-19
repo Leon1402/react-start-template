@@ -35,7 +35,7 @@ const MainImage = styled.img`
 const OtherImagesContainer = styled.div`
   display: flex;
   height: 30%;
-`
+`;
 
 const Image = styled.img`
   border: 1px solid red;
@@ -79,10 +79,10 @@ export const OperationCard: FC<IProps> = ({ price, name, descr, category, images
           ))}
         </OtherImagesContainer>
       </ImagesConatainer>
-      <Description>{category}</Description>
-      <Name>{name}</Name>
-      <Description>{descr}</Description>
-      <Price>{price}</Price>
+      <Description>Категория: {category}</Description>
+      <Name>Название: {name}</Name>
+      <Description>Описание:{descr}</Description>
+      <Price>Цена: {price}</Price>
       <AddToCartButton counter={0} />
     </Container>
   );
