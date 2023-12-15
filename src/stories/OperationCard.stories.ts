@@ -15,7 +15,7 @@ const meta: Meta<typeof OperationCard> = {
     category: { defaultValue: operation.category.name },
     name: { defaultValue: operation.name },
     price: { defaultValue: operation.amount },
-    images: {defaultValue: ['1', '2', '3', '4']}
+    images: { defaultValue: ['1', '2', '3', '4'] },
   },
 };
 
@@ -27,6 +27,6 @@ export const OperationCardDefault = {
     name: operation.name,
     price: operation.amount,
     category: operation.category.name,
-    images: ['1', '2', '3', '4']
+    images: ['1', '2', '3', '4'],
   },
 };

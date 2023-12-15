@@ -29,7 +29,10 @@ const CounterInput = styled.input`
   border-left: none;
   border-right: none;
 `;
-const CounterButton = styled.button<{ $left?: boolean }>`
+interface ICounterButtonProps {
+  $left?: boolean;
+}
+const CounterButton = styled.button<ICounterButtonProps>`
   ${buttonStyle}
   color: #005bff;
   background: rgba(0, 150, 255, 0.08);
@@ -58,9 +61,9 @@ const InputWithCounter = () => (
   </Container>
 );
 
-interface Iprops {
+interface IProps {
   counter: number;
 }
-export const AddToCartButton: FC<Iprops> = ({ counter }) => {
+export const AddToCartButton: FC<IProps> = ({ counter }) => {
   return counter ? <InputWithCounter /> : <Button />;
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Header } from '../header/Header';
 import { BasketProducts } from '../basketProducts/BasketProducts';
+import { ModalViewer } from '../modal/modalView';
 
 const LayoutContainer = styled.div`
   width: 100%;
@@ -13,7 +14,7 @@ export const Layout = () => {
   return (
     <LayoutContainer>
       <Header />
-
+      <ModalViewer />
       <BasketProducts />
     </LayoutContainer>
   );

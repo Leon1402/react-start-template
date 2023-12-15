@@ -1,16 +1,16 @@
-import React, { FC, PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren, useRef } from 'react';
 import styled, { css } from 'styled-components';
-
-interface IProps {
-  visible: boolean;
-}
 
 const active = css`
   opacity: 1;
   pointer-events: auto;
 `;
 
-const StyledModalContainer = styled.div<IProps>`
+interface IStyledModalContainerProps {
+  $visible: boolean;
+}
+
+const StyledModalContainer = styled.div<IStyledModalContainerProps>`
   position: absolute;
   left: 0;
   top: 0;
@@ -23,7 +23,7 @@ const StyledModalContainer = styled.div<IProps>`
   transition: opacity 0.3s ease-out;
   opacity: 0;
   pointer-events: none;
-  ${({ visible }) => visible && active};
+  ${({ $visible }) => $visible && active};
 `;
 
 const StyledModal = styled.div`
@@ -32,7 +32,7 @@ const StyledModal = styled.div`
   min-height: 40vh;
   width: 100%;
   padding: 10px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.background};
   box-shadow: 1px 1px 10px black;
 `;
 
@@ -53,7 +53,7 @@ const CloseButton = styled.button`
   &::after {
     content: '';
     position: absolute;
-    background-color: black;
+    background-color: ${({ theme }) => theme.colors.text};
     left: 50%;
     top: 0px;
     width: 2px;
@@ -67,11 +67,22 @@ const CloseButton = styled.button`
   }
 `;
 
-export const Modal: FC<PropsWithChildren<IProps>> = ({ visible, children }) => {
+interface IProps {
+  visible: boolean;
+  onClose: () => void;
+}
+export const Modal: FC<PropsWithChildren<IProps>> = ({ visible, onClose, children }) => {
+  const ref = useRef(null);
+
+  const handleClickAway: React.MouseEventHandler<HTMLDivElement> = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      onClose();
+    }
+  };
   return (
-    <StyledModalContainer visible={visible}>
-      <StyledModal>
-        <CloseButton />
+    <StyledModalContainer onClick={handleClickAway} $visible={visible}>
+      <StyledModal ref={ref}>
+        <CloseButton onClick={onClose} />
         {children}
       </StyledModal>
     </StyledModalContainer>

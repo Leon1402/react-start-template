@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { AddToCartButton } from '../buttons/AddToCartButton';
+import { useTranslation } from 'react-i18next';
 
 const mb10 = css`
   margin-bottom: 10px;
@@ -67,8 +68,10 @@ interface IProps {
   images: string[];
 }
 
-export const OperationCard: FC<IProps> = ({ price, name, descr, category, images }) => {
+export const OperationCard: FC<IProps> = (props) => {
+  const { price, name, descr, category, images } = props;
   const [mainImage, ...otherImages] = images;
+  const { t } = useTranslation();
   return (
     <Container>
       <ImagesConatainer>
@@ -79,10 +82,18 @@ export const OperationCard: FC<IProps> = ({ price, name, descr, category, images
           ))}
         </OtherImagesContainer>
       </ImagesConatainer>
-      <Description>Категория: {category}</Description>
-      <Name>Название: {name}</Name>
-      <Description>Описание:{descr}</Description>
-      <Price>Цена: {price}</Price>
+      <Description>
+        {t`text.category`}: {category}
+      </Description>
+      <Name>
+        {t`text.name`}: {name}
+      </Name>
+      <Description>
+        {t`text.description`}:{descr}
+      </Description>
+      <Price>
+        {t`text.price`}: {price}
+      </Price>
       <AddToCartButton counter={0} />
     </Container>
   );

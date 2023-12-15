@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { AddToCartButton } from '../buttons/AddToCartButton';
+import { useTranslation } from 'react-i18next';
 
 const Container = styled.div`
   display: flex;
@@ -40,12 +41,19 @@ interface IProps {
   image: string;
 }
 
-export const ShortCard: FC<IProps> = ({ price, name, descr, image }) => {
+export const ShortCard: FC<IProps> = (props) => {
+  const { price, name, descr, image } = props;
+  const { t } = useTranslation();
+
   return (
     <Container>
       <Image src={image} alt="card image" />
-      <Price>Цена: {price}</Price>
-      <Name>Название: {name}</Name>
+      <Price>
+        {t`text.price`}: {price}
+      </Price>
+      <Name>
+        {t`text.name`}: {name}
+      </Name>
       <Description>{descr}</Description>
       <AddToCartButton counter={0} />
     </Container>

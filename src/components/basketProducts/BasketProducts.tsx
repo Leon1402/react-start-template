@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -14,10 +15,11 @@ const DeleteButton = styled.button`
 `;
 
 export const BasketProducts = () => {
+  const { t } = useTranslation();
   return (
     <Container>
-      <h2>Basket Products</h2>
-      <DeleteButton>Delete</DeleteButton>
+      <h2>{t`titles.basket`}</h2>
+      <DeleteButton>{t`buttons.delete`}</DeleteButton>
     </Container>
   );
 };
