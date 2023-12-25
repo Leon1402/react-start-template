@@ -11,7 +11,7 @@ const meta: Meta<typeof ShortCard> = {
   component: ShortCard,
   tags: ['autodocs'],
   argTypes: {
-    descr: { defaultValue: product.desc },
+    desc: { defaultValue: product.desc },
     image: { defaultValue: product.photo },
     name: { defaultValue: product.name },
     price: { defaultValue: product.price },
@@ -22,7 +22,7 @@ export default meta;
 
 export const ShortCardDefault = {
   args: {
-    descr: product.desc,
+    desc: product.desc,
     image: product.photo,
     name: product.name,
     price: product.price,

@@ -1,9 +1,11 @@
 import React, { FC, PropsWithChildren, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import styled, { css } from 'styled-components';
 
 const active = css`
   opacity: 1;
   pointer-events: auto;
+  z-index: 100;
 `;
 
 interface IStyledModalContainerProps {
@@ -79,12 +81,13 @@ export const Modal: FC<PropsWithChildren<IProps>> = ({ visible, onClose, childre
       onClose();
     }
   };
-  return (
+  return createPortal(
     <StyledModalContainer onClick={handleClickAway} $visible={visible}>
       <StyledModal ref={ref}>
         <CloseButton onClick={onClose} />
         {children}
       </StyledModal>
-    </StyledModalContainer>
+    </StyledModalContainer>,
+    document.body
   );
 };

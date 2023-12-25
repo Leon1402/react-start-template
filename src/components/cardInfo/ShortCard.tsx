@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { AddToCartButton } from '../buttons/AddToCartButton';
 import { useTranslation } from 'react-i18next';
+import { TOperation } from '../../homeworks/ts1/3_write';
 
 const Container = styled.div`
   display: flex;
@@ -37,12 +38,12 @@ const Description = styled.span`
 interface IProps {
   price: number;
   name: string;
-  descr: string;
+  desc?: string;
   image: string;
 }
 
 export const ShortCard: FC<IProps> = (props) => {
-  const { price, name, descr, image } = props;
+  const { price, name, desc, image } = props;
   const { t } = useTranslation();
 
   return (
@@ -54,7 +55,7 @@ export const ShortCard: FC<IProps> = (props) => {
       <Name>
         {t`text.name`}: {name}
       </Name>
-      <Description>{descr}</Description>
+      <Description>{desc}</Description>
       <AddToCartButton counter={0} />
     </Container>
   );

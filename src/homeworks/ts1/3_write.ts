@@ -68,7 +68,7 @@ type TCategoryGeneralFields = {
   category: TCategory;
 };
 
-type TProduct = TCategory &
+export type TProduct = TCategory &
   TCategoryGeneralFields & {
     oldPrice?: number;
     price: number;
@@ -83,7 +83,7 @@ enum EOperation {
   Profit,
 }
 
-type TOperation = TCost | TProfit;
+export type TOperation = TCost | TProfit;
 
 type TCost = TGeneralFields &
   TCategoryGeneralFields &
