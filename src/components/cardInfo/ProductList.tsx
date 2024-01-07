@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { TProduct, createRandomProduct } from '../../homeworks/ts1/3_write';
-import { OperationCard } from './OperationCard';
+import { ProductCard } from './ProductCard';
 import styled from 'styled-components';
 import { useIsVisible } from '../../hooks/useIsVisible';
 
@@ -15,7 +15,7 @@ const ListContainer = styled.ul`
 
 const nowDate = new Date(0);
 
-const addOperationsToList = (count = 5, list: TProduct[] = []): TProduct[] => {
+const addProductsToList = (count = 5, list: TProduct[] = []): TProduct[] => {
   return [
     ...list,
     ...Array.from({ length: count }).map(() =>
@@ -24,11 +24,11 @@ const addOperationsToList = (count = 5, list: TProduct[] = []): TProduct[] => {
   ];
 };
 
-export const OperationList = () => {
-  const [operations, setOperations] = useState<TProduct[]>(addOperationsToList());
+export const ProductList = () => {
+  const [operations, setOperations] = useState<TProduct[]>(addProductsToList());
 
-  const addOperations = useCallback((count = 5) => {
-    setOperations((list) => addOperationsToList(count, list));
+  const addProduct = useCallback((count = 5) => {
+    setOperations((list) => addProductsToList(count, list));
   }, []);
 
   const targetRef = React.useRef(null);
@@ -43,15 +43,15 @@ export const OperationList = () => {
 
   useEffect(() => {
     if (isVisible) {
-      addOperations(5);
+      addProduct(5);
     }
-  }, [addOperations, isVisible]);
+  }, [addProduct, isVisible]);
 
   return (
     <ListContainer>
       {operations.map((operation) => (
         <li key={operation.id}>
-          <OperationCard
+          <ProductCard
             price={operation.price}
             category={operation.category.name}
             images={['1', '2', '3', '4']}

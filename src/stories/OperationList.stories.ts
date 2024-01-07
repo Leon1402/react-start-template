@@ -1,12 +1,12 @@
 import type { Meta } from '@storybook/react';
 import '../index.css';
-import { OperationList } from '../components/cardInfo/OperationList';
+import { ProductList } from '../components/cardInfo/ProductList';
 import { TProduct, createRandomProduct } from '../homeworks/ts1/3_write';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta: Meta<typeof OperationList> = {
+const meta: Meta<typeof ProductList> = {
   title: 'Example/OperationList',
-  component: OperationList,
+  component: ProductList,
   tags: ['autodocs'],
   argTypes: {
     operations: { defaultValue: [] },

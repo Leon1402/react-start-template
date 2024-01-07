@@ -78,7 +78,7 @@ type TOperationGeneralFields = {
   amount: number;
 };
 
-enum EOperation {
+export enum EOperation {
   Cost,
   Profit,
 }

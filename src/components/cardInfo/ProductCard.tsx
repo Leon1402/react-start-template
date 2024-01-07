@@ -68,7 +68,7 @@ interface IProps {
   images: string[];
 }
 
-export const OperationCard: FC<IProps> = (props) => {
+export const ProductCard: FC<IProps> = (props) => {
   const { price, name, descr, category, images } = props;
   const [mainImage, ...otherImages] = images;
   const { t } = useTranslation();

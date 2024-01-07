@@ -1,14 +1,14 @@
 import type { Meta } from '@storybook/react';
 import '../index.css';
-import { OperationCard } from '../components/cardInfo/OperationCard';
+import { ProductCard } from '../components/cardInfo/ProductCard';
 import { createRandomOperation } from '../homeworks/ts1/3_write';
 
 const operation = createRandomOperation('11/12/2023');
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta: Meta<typeof OperationCard> = {
+const meta: Meta<typeof ProductCard> = {
   title: 'Example/OperationCard',
-  component: OperationCard,
+  component: ProductCard,
   tags: ['autodocs'],
   argTypes: {
     descr: { defaultValue: operation.desc },

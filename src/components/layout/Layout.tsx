@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Header } from '../header/Header';
 import { BasketProducts } from '../basketProducts/BasketProducts';
 import { ModalViewer } from '../modal/modalView';
-import { OperationList } from '../cardInfo/OperationList';
+import { ProductList } from '../cardInfo/ProductList';
+import { AddOperationForm } from '../forms/AddOperationForm';
 
 const LayoutContainer = styled.div`
   width: 100%;
@@ -14,9 +15,10 @@ export const Layout = () => {
   return (
     <LayoutContainer>
       <Header />
-      <ModalViewer />
+      {/* <ModalViewer />
       <OperationList />
-      <BasketProducts />
+      <BasketProducts /> */}
+      <AddOperationForm />
     </LayoutContainer>
   );
 };
