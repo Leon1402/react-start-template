@@ -25,3 +25,7 @@ export const AddOperationFormDefault = {
     },
   },
 };
+
+export const EditOperationFormDefault = {
+};
+

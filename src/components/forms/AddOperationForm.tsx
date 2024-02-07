@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { EOperation } from '../../homeworks/ts1/3_write';
 
 const StyledForm = styled.form`
   display: flex;
@@ -25,6 +26,7 @@ interface IFormInput {
   name: string;
   desc: string;
   category: string;
+  type: EOperation;
   file: FileList;
 }
 
@@ -33,6 +35,7 @@ const schema = yup.object({
   name: yup.string().required('required'),
   desc: yup.string(),
   category: yup.string().required('required'),
+  type: yup.number(),
   file: yup.mixed(),
 });
 
@@ -55,6 +58,8 @@ export const AddOperationForm: React.FC<IProps> = ({ values }) => {
   });
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
+  console.log(errors);
+
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <h3>{buttonText}</h3>
@@ -69,6 +74,14 @@ export const AddOperationForm: React.FC<IProps> = ({ values }) => {
       />
       <InputField error={errors?.desc} type="text" name="desc" register={register} />
       <InputField error={errors?.category} type="text" name="category" register={register} />
+      <select name="type" defaultValue={EOperation.Cost} {...register('type')}>
+        {(Object.keys(EOperation).filter((v) => isNaN(Number(v))) as Array<keyof typeof EOperation>).map((key) => (
+          <option key={key} value={EOperation[key]}>
+            {key}
+          </option>
+        ))}
+      </select>
+
       <input type="file" {...register('file')} />
       <StyledButton type="submit">{buttonText}</StyledButton>
     </StyledForm>
